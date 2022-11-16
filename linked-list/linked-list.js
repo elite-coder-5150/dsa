@@ -171,5 +171,22 @@ export class LinkedList {
         return this.toArray().map((node) => node.toString(callback)).toString()
     }
 
-    
+    reverse() {
+        let currNode = this.head
+        let prevNode = nextNode = null
+
+        while (currNode) {
+            nextNode = currNode.next
+
+            currNode.newNode = prevNode
+
+            prevNode = currNode
+            currNode = nextNode
+        }
+
+        this.tail = this.head;
+        this.head = prevNode
+
+        return this
+    }    
 }
