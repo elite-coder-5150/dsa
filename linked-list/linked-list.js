@@ -6,6 +6,8 @@ export class LinkedList {
         this.head = null;
         this.tail = null;
 
+        this.node = new LinkedListNode();
+
         this.compare = new Comparator(conpareFn);
     }
 
@@ -90,21 +92,6 @@ export class LinkedList {
 
         let currentNode = this.head
 
-        //? ********************************************************************************************
-        
-        //? the if statement check to see if the currentNode is not null
-        //?     create a while loop while currentNode.next != null
-        //?     increment deleteNode to the next node
-        //?     then set currentNode.next = currentNode.next.next
-        //?     else
-        //?         set the currentNode = currentNode.next
-        //? then check to see if the currentNode.next.value and it matches the value
-        //?    this.tail = currentNode
-        //? return delete node
-        //?
-        //? I would write more comments but i may write more comments on this section of the algorithm
-        //? ********************************************************************************************
-
         if (currentNode !== null) {
             while (currentNode.next) {
                 if (this.compare.equal(currentNode.next.value, value)) {
@@ -130,21 +117,16 @@ export class LinkedList {
         let currentNode = this.head
 
         while (currentNode) {
-            // todo: when the phones gets charged I'm going to use my keyboard for coding.
-            //* this is another comment
-
-            //? ****************************************************************************************
-
-            //? this is a question. this type of comment is my absolute favorite. because i can use this
-            //? type of comment in the middle of a code block and ask a particular question.
-            //? for instance,
-            //?     What is this code really doing, it almost make any sense
-            //?     everything outside of todos and debugging information, i will use these comments.
-            //? ****************************************************************************************
-            //! this is for things like displaying debugging information.
+        
+        
         }
     }
 }
 
 let ll = new LinkedList();
 ll.insert()
+
+if (ll.find(undefined, undefined)) {
+    this.error = 'an error happen when trying to find an item within the list'
+    return false;
+}
