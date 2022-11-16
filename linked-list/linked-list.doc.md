@@ -140,4 +140,4 @@ reverse_traversal(head, tail)
 		curr <- curr.value
 	end if
 end reverse_traversal
-```ß
+```
