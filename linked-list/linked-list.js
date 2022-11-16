@@ -117,16 +117,59 @@ export class LinkedList {
         let currentNode = this.head
 
         while (currentNode) {
-        
-        
+            if (callback && callback(currentNode.value)) {
+                return currentNode
+            }
+
+            if (value !== undefined && this.compare.equal(currentNode.value, value)) {
+                return currentNode
+            }
+
+            currentNode = currentNode.next
         }
+
+        return null
     }
-}
 
-let ll = new LinkedList();
-ll.insert()
+    deleteTail() {}
 
-if (ll.find(undefined, undefined)) {
-    this.error = 'an error happen when trying to find an item within the list'
-    return false;
+    deleteHead() {
+        if (!this.head)
+            return null
+
+        const deleteHead = this.head;
+
+        if (this.head.next) {
+            this.head = this.head.next
+        } else {
+            this.head = null
+            this.tail = null
+        }
+
+        return deleteHead
+    }
+
+    fromArray(values) {
+        values.forEach((value) => this.append(value))
+        return this
+    }
+
+    toArray() {
+        const nodes = []
+
+        let currentNode = this.head
+
+        while (currentNode) {
+            nodes.push(currentNode);
+            currentNode = currentNode.next
+        }
+
+        return nodes
+    }
+
+    toString(callback) {
+        return this.toArray().map((node) => node.toString(callback)).toString()
+    }
+
+    
 }
