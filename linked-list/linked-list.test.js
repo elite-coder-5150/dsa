@@ -41,6 +41,9 @@ describe('LinkedListNode', () => {
 
         const toStringCb = (value) => `value: ${value.value}, key: ${value.key}`
         
-        expect(node.toString(toStringCb)).toBe('value: 1, key: test')
+        expect(node.toString(toStringCb)).toBe('value: 1, key: test');
+
+        //? I would rather use the built in terminal rather then iTerm
+        
     });
 });
