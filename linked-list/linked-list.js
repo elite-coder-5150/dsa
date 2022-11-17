@@ -186,7 +186,7 @@ export class LinkedList {
 
         this.tail = this.head;
         this.head = prevNode
-
+ 
         return this
     }    
 }
