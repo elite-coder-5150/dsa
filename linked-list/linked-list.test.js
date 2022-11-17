@@ -170,7 +170,12 @@ describe('LinkedList', () => {
             .append({ value: 2, key: 'test2'})
             .append({ value: 3, key: 'test3'})
 
-        const node = linkedList.find({ callback: { (value) => value.key === 'test5'}}).toBeNull()
+        const node = linkedList.find({ callback : (value) => value.key === 'test2'});
+
+        expect(node).toBeDefined();
+        expec(node.value.value).toBe(2);
+        expect(node.value.key).toBe('test2');
+        expect(linkedList.find({ callback: (value) => value.key === 'test5'}};ß
     });
 
     it ('should create a linked list from an array', () => {
