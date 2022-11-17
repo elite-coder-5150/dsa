@@ -131,7 +131,29 @@ export class LinkedList {
         return null
     }
 
-    deleteTail() {}
+    deleteTail() {
+         const deleteTail = this.tail
+
+         if (this.head === this.tail) {
+            this.head = null;
+            this.tail = null;
+
+            return deleteTail;
+         }
+
+         let currNode = this.head;
+
+         while (currNode.next) {
+            if (!currNode.next.next) {
+                currNode.next = null
+            } else {
+                currNode = currNode.next
+            }
+         }
+
+         this.tail = currNode
+         return deleteTail
+    }
 
     deleteHead() {
         if (!this.head)
