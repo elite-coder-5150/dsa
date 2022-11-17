@@ -175,7 +175,7 @@ describe('LinkedList', () => {
         expect(node).toBeDefined();
         expec(node.value.value).toBe(2);
         expect(node.value.key).toBe('test2');
-        expect(linkedList.find({ callback: (value) => value.key === 'test5'}};ß
+        expect(linkedList.find({ callback: (value) => value.key === 'test5'}));
     });
 
     it ('should create a linked list from an array', () => {
