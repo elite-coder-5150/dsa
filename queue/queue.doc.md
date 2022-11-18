@@ -1,4 +1,0 @@
-#### what is a queue?
-A queue is a particular kind of abstract data type or collection in which the entities in the collection are kept in order and the principle (or only) operations on the collection are the addition of entities to the rear terminal position, known as an enque, and removal of entities from the front terminal position. Removing an element from a queue is called dequeue.
-
-This construct make the queue data structure a first-in-first-out (FIFO). in a fifo data structure, the first element added to the queue will be the first one to be removed. Once a new element is added to the queue, all the element that were added before have been removed. Often a peek or front operation is also entered, returning the value from the front element witout dequeueing it. A queue is an example of a linear data structure, to more abstractly a sequential collection.
