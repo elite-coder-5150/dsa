@@ -1,5 +1,6 @@
 import { Comparator } from "../../../util/comparator";
 
+//? this is such a beautiful algorithm
 export const binarySearch = (arr, seek, compareCB) => {
     const comparator = new Comparator(compareCB);
     let start = 0;
