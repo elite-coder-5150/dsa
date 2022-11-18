@@ -85,7 +85,7 @@ export class Heap {
     remove(item, comparator = this.compare) {
         const numItemsToRemove = this.find(item, comparator).pop();
 
-        for (let i = 0; i < numItemsToRemove; i += 1) {ß
+        for (let i = 0; i < numItemsToRemove; i += 1) {
             const remove = this.find()
         }
     }
