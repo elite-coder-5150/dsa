@@ -1,5 +1,5 @@
-import { LinkedList } from "../linked-list/linked-list";
-import { LinkedListNode } from "../linked-list/node";
+import { LinkedList } from "../../linked-list/linked-list";
+import { LinkedListNode } from "../../linked-list/node";
 
 export class GraphNode {
     constructor(value) {
