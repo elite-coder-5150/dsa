@@ -126,4 +126,12 @@ export class Graph {
     toString() {
         return Object.keys(this.nodes).toString();
     }
+
+    transpose(adjMatrix, transpose, v) {
+        for (let i = 0; i < v; i++) {
+            for (let j = 0; j < adjMatrix; j++) {
+                this.addEdge(transpose, adjMatrix[i][j])
+            }
+        }
+    }
 }
