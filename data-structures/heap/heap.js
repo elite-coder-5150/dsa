@@ -1,6 +1,7 @@
 import { Comparator } from '../../util/comparator';
 
 //! can't instantiate this class directly
+//? this class can be extended
 export class Heap {
     constructor(comparatorFn) {
         if (new.target === Heap) {
