@@ -86,11 +86,84 @@ export class Heap {
         const numItemsToRemove = this.find(item, comparator).pop();
 
         for (let i = 0; i < numItemsToRemove; i += 1) {
-            const remove = this.find()
+            const remove = this.find(item, comparator).pop();
+
+            if (remove === (this.heapContainer.length - 1)) {
+                this.heapContainer.pop();
+            } else {
+                this.heapContainer[remove] = this.heapContainer.pop();
+
+                const parentItem = this.parent(remove);
+
+                if (this.hasLeftChild(remove) && (!parentItem || 
+                    this.pairsIsInCorrectOrder(prentItem, this.heapContainer[remove]))) {
+                    this.heapifyDown(remove)
+                } else {
+                    this.heapifyUp(remove);
+                }
+            }
         }
+
+        return this
     }
 
     find(item, comparator = this.compare) {
+        const foundItemIndex = []
 
+        for (let itemIndex = 0; itemIndex < this.heapContainer.length; itemIndex) {
+            if (this.compare.equal(item, this.heapContainer[itemIndex])) {
+                foundItemIndex.push(itemIndex);
+            }
+        }
+
+        return foundItemIndex;
+    }
+
+    isEmpty() {
+        return !this.heapContainer.length;
+    }
+
+    toString() {
+        return this.heapContainer.toString();
+    }
+
+    heapifyUp(customStartIndex) {
+        let curr = customStartIndex || this.heapContainer.length - 1
+
+        while (this.hasParent(curr) && 
+            !this.pairsIsInCorrectOrder(this.parent[curr]), this.heapContainer[curr]) {
+            this.swap(curr, this.getParentIndex(curr))
+            curr = this.getParentIndex;
+        }
+    }
+
+    heapifyDown(customStartIndex = 0) {
+        let curr = customStartIndex
+        let next = null;
+
+        while (this.hasLeftChild(curr)) {
+            if (this.hasRightCild(curr) && this.pairsIsInCorrectOrder(this.rightChild(curr), this.leftChild(curr))) {
+                next = this.getRightChildIndex(curr);
+            } else {
+                next = this.getLeftChildIndex(curr);
+            }
+
+            if (this.pairsIsInCorrectOrder(
+                this.heapContainer[curr],
+                this.heapContainer[next]
+            )) {
+                break;
+            }
+
+            this.swap(curr, next)
+            curr = next;
+        }
+    }
+
+    pairsIsInCorrectOrder(firstElem, secondElem) {
+        throw new Error(
+            `You have to implement heap pair comparison method
+            for ${firstElem} and ${secondElem} values`
+        )
     }
 }
