@@ -81,19 +81,89 @@ export class DoublyLinkedList {
         return _delete
     }
 
+    //? this is the most basic high order function
     find({ value = undefined, callback = undefined }) {
+        if (!this.head) {
+            return null
+        }
 
+        let curr = this.head
+
+        while (curr) {
+            if (callback && callback(curr.value)) {
+                return curr
+            }
+            
+            if (value !== undefined) {
+                return curr
+            }
+
+            curr = curr.next
+        }
+
+        return null;
     }
 
-    deleteTail() {}
+    deleteTail() {
+        if (!this.tail) {
+            return null; // there is no tail to delete
+        }
 
-    deleteHead() {}
+        if (this.head === this.tail) {
+            const _deleteTail = this.tail
+            this.head = null
+            this.tail = null
+            return _deleteTail
+        }
 
-    toArray() {}
+        const _deleteTail = this.tail;
 
-    fromArray() {}
+        this.tail = this.tail.prev
+        this.tail.next = null;
 
-    toString() {}
+        return _deleteTail
+    }
+
+    deleteHead() {
+        if (!this.head) {
+            return null
+        }
+
+        const _deleteHead = this.head
+
+        if (this.head.next) {
+            this.head = this.next.next
+            this.head.prev = null
+        } else {
+            this.head = null;
+            this.tail = null
+        }
+
+        return _deleteHead
+    }
+
+    toArray() {
+        const nodes = []
+
+        let curr = this.head
+
+        while (curr) {
+            nodes.push(curr)
+            curr = curr.next
+        }
+
+        return nodes
+    }
+
+    fromArray(values) {
+        values.forEach((value) => {
+            this.append(value)
+        });
+    }
+
+    toString(callback) {
+        return this.toArray().map((node) => node.toString(callback)).toString
+    }
 
     reverse() {
         let curr = this.head,
