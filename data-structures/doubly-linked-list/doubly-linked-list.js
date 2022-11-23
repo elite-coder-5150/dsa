@@ -64,10 +64,56 @@ export class DoublyLinkedList {
                         this.tail = null
                     }
                 } else if (_delete === this.tail) {
-                    
+                    this.tail = _delete.prev;
+                    this.tail.next = null
+                } else {
+                    prevNode =  _delete.prev
+                    nextNode = _delete.next;
+
+                    prevNode.next = newNode;
+                    nextNode.prev = prevNode;
                 }
             }
+
+            curr = curr.next;
         }
 
+        return _delete
+    }
+
+    find({ value = undefined, callback = undefined }) {
+
+    }
+
+    deleteTail() {}
+
+    deleteHead() {}
+
+    toArray() {}
+
+    fromArray() {}
+
+    toString() {}
+
+    reverse() {
+        let curr = this.head,
+            prev = null,
+            next = null;
+
+        while (curr) {
+            next = curr.next
+            prev = curr.prev
+
+            curr.next = prev
+            curr.prev = next
+
+            prev = curr
+            curr = next
+        }
+
+        this.tail = this.head;
+        this.head = prev
+
+        return this;
     }
 }
