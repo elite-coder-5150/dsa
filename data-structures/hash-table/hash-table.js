@@ -198,4 +198,47 @@ export class HashTable {
         const histogram = this.getBucketsLoadFactorHistogram();
         return Object.keys(histogram).map(key => `${key}: ${histogram[key]}`).join(''); // eslint-disable-line
     }
+
+    getBucketsSizeHistogramString() {
+        const histogram = this.getBucketsSizeHistogram();
+        return Object.keys(histogram).map(key => `${key}: ${histogram[key]}`).join(''); // eslint-disable-line
+    }
+
+    toString() {
+        return Object.keys(this.keys)
+            .map(key => `${key}: ${this.get(key)}`)
+            .join(''); // eslint-disable-line
+    }
+
+    getBucketsString() {
+        return this.buckets.map(bucket => bucket.toString()).join(''); // eslint-disable-line
+    }
+
+    getBucketsArray() {
+        return this.buckets.map(bucket => bucket.toArray());
+    }
+
+    getBucketsArrayString() {
+        return this.buckets.map(bucket => bucket.toArray().join('')).join(''); // eslint-disable-line
+    }
+
+    getBucketsLinkedListString() {
+        return this.buckets.map(bucket => bucket.toString()).join(''); // eslint-disable-line
+    }
+
+    getBucketsLinkedListArray() {
+        return this.buckets.map(bucket => bucket.toArray());
+    }
+
+    getBucketsLinkedListArrayString() {
+        return this.buckets.map(bucket => bucket.toArray().join('')).join(''); // eslint-disable-line
+    }
+
+    getBucketsLinkedListHeadArray() {
+        return this.buckets.map(bucket => bucket.head.toArray());
+    }
+
+    getBucketsLinkedListHeadArrayString() {
+        return this.buckets.map(bucket => bucket.head.toArray().join('')).join(''); // eslint-disable-line
+    }
 }
