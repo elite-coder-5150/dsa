@@ -54,4 +54,75 @@ export class HashTable {
     has(key) {
         return Object.hasOwnProperty.call(this.keys, key);
     }
+
+    getKeys() {
+        return Object.keys(this.keys);
+    }
+
+    getValues() {
+        return Object.keys(this.keys).map(key => this.get(key));
+    }
+
+    getEntries() {
+        return Object.keys(this.keys).map(key => ({ key, value: this.get(key) }));
+    }
+
+    getBuckets() {
+        return this.buckets;
+    }
+
+    getBucketByKey(key) {
+        return this.buckets[this.hash(key)];
+    }
+
+    getBucketByIndex(index) {
+        return this.buckets[index];
+    }
+
+    getBucketSize() {
+        return this.buckets.length;
+    }
+
+    getKeysCount() {
+        return Object.keys(this.keys).length;
+    }
+
+    getValuesCount() {
+        return Object.keys(this.keys).length;
+    }
+
+    getEntriesCount() {
+        return Object.keys(this.keys).length;
+    }
+
+    getBucketsCount() {
+        return this.buckets.length;
+    }
+
+    getBucketsSize() {
+        return this.buckets.length;
+    }
+
+    getBucketsAverageSize() {
+        return this.getKeysCount() / this.getBucketsCount();
+    }
+
+    getBucketsMaxSize() {
+        return Math.max(...this.buckets.map(bucket => bucket.toArray().length));
+    }
+
+    getBucketsMinSize() {
+        return Math.min(...this.buckets.map(bucket => bucket.toArray().length));
+    }
+
+    getBucketsStandardDeviation() {
+        const average = this.getBucketsAverageSize();
+        const squareDiffs = this.buckets.map(bucket => (bucket.toArray().length - average) ** 2);
+        const avgSquareDiff = squareDiffs.reduce((total, diff) => total + diff) / this.buckets.length;
+        return Math.sqrt(avgSquareDiff);
+    }
+
+    getBucketsStandardDeviationRatio() {
+        return this.getBucketsStandardDeviation() / this.getBucketsAverageSize();
+    }
 }
