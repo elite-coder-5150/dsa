@@ -179,4 +179,23 @@ export class HashTable {
 
         return histogram;
     }
+
+    getBucketsSizeHistogram() {
+        const histogram = {};
+        this.buckets.forEach((bucket) => {
+            const bucketSize = bucket.toArray().length;
+            if (histogram[bucketSize]) {
+                histogram[bucketSize] += 1;
+            } else {
+                histogram[bucketSize] = 1;
+            }
+        });
+
+        return histogram;
+    }
+
+    getBucketsLoadFactorHistogramString() {
+        const histogram = this.getBucketsLoadFactorHistogram();
+        return Object.keys(histogram).map(key => `${key}: ${histogram[key]}`).join(''); // eslint-disable-line
+    }
 }
