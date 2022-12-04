@@ -125,4 +125,58 @@ export class HashTable {
     getBucketsStandardDeviationRatio() {
         return this.getBucketsStandardDeviation() / this.getBucketsAverageSize();
     }
+
+    getBucketsLoadFactor() {
+        return this.getKeysCount() / this.getBucketsCount();
+    }
+
+    getBucketsMaxLoadFactor() {
+        return this.getBucketsMaxSize() / this.getBucketsCount();
+    }
+
+    getBucketsMinLoadFactor() {
+        return this.getBucketsMinSize() / this.getBucketsCount();
+    }
+
+    getBucketsLoadFactorStandardDeviation() {
+        const average = this.getBucketsLoadFactor();
+        const squareDiffs = this.buckets.map(bucket => (bucket.toArray().length / this.getBucketsCount() - average) ** 2);
+        const avgSquareDiff = squareDiffs.reduce((total, diff) => total + diff) / this.buckets.length;
+        return Math.sqrt(avgSquareDiff);
+    }
+
+    getBucketsLoadFactorStandardDeviationRatio() {
+        return this.getBucketsLoadFactorStandardDeviation() / this.getBucketsLoadFactor();
+    }
+
+    getBucketsEmptyCount() {
+        return this.buckets.filter(bucket => bucket.toArray().length === 0).length;
+    }
+
+    getBucketsNotEmptyCount() {
+        return this.buckets.filter(bucket => bucket.toArray().length > 0).length;
+    }
+
+    getBucketsEmptyRatio() {
+        return this.getBucketsEmptyCount() / this.getBucketsCount();
+    }
+
+    getBucketsNotEmptyRatio() {
+        return this.getBucketsNotEmptyCount() / this.getBucketsCount();
+    }
+
+    getBucketsLoadFactorHistogram() {
+        const histogram = {};
+        this.buckets.forEach((bucket) => {
+            const bucketSize = bucket.toArray().length;
+            const bucketLoadFactor = bucketSize / this.getBucketsCount();
+            if (histogram[bucketLoadFactor]) {
+                histogram[bucketLoadFactor] += 1;
+            } else {
+                histogram[bucketLoadFactor] = 1;
+            }
+        });
+
+        return histogram;
+    }
 }
