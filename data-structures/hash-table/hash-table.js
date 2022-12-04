@@ -30,4 +30,28 @@ export class HashTable {
             node.value.value = value;
         }
     }
+
+    delete(key) {
+        const keyHash = this.hash(key);
+        delete this.keys[key];
+        const bucketLinkedList = this.buckets[keyHash];
+        const node = bucketLinkedList.find({ callback: nodeValue => nodeValue.key === key });
+
+        if (node) {
+            return bucketLinkedList.delete(node.value);
+        }
+
+        return null;
+    }
+
+    get(key) {
+        const bucketLinkedList = this.buckets[this.hash(key)];
+        const node = bucketLinkedList.find({ callback: nodeValue => nodeValue.key === key });
+
+        return node ? node.value.value : undefined;
+    }
+
+    has(key) {
+        return Object.hasOwnProperty.call(this.keys, key);
+    }
 }
