@@ -2,7 +2,7 @@
  * javascript program for implemenation of kmp search algorithm
  */
 
-export const computeLSPArray(pat, M, lsp) {
+export const computeLSPArray = (pat, M, lsp) => {
     let len = 0;
     let i = 1;
     lsp[0] = 0;
